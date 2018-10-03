@@ -7,28 +7,31 @@
 //
 
 import Foundation
+import ObjectMapper
 
 typealias JSONData = [String: Any]
 
-struct User {
-    var firstName: String
-    var lastName: String
+struct User: Mappable {
+    var firstName: String = ""
+    var lastName: String = ""
     var profilePicture: String?
     var role: String?
     var countryID: Int?
-//    var club: Club?
-//    var primaryPosition: PrimaryPosition?
-    var isVerified: Bool
+    var club: Club?
+    var isVerified: Bool = false
     var gender: String?
+
+    init?(map: Map) {}
     
-    init(jsonData: JSONData) {
-        self.firstName = jsonData["firstname"] as? String ?? ""
-        self.lastName = jsonData["lastname"] as? String ?? ""
-        self.profilePicture = jsonData["profile_picture"] as? String ?? ""
-        self.role = jsonData["role"] as? String ?? ""
-        self.gender = jsonData["gender"] as? String ?? ""
-        self.countryID = jsonData["country_id"] as? Int ?? -1
-        self.isVerified = jsonData["is_verified"] as? Bool ?? false
+    mutating func mapping(map: Map) {
+        firstName <- map["firstname"]
+        lastName <- map["lastname"]
+        profilePicture <- map["profile_picture"]
+        role <- map["role"]
+        countryID <- map["country_id"]
+        club <- map["club"]
+        isVerified <- map["is_verified"]
+        gender <- map["gender"]
     }
     
 }

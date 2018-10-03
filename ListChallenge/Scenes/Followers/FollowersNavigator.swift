@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FollowersNavigator {
     func toDetail()
@@ -14,8 +15,16 @@ protocol FollowersNavigator {
 
 class DefaultFollowersNavitor: FollowersNavigator {
     
+    private let storyBoard: UIStoryboard
+    private let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController, storyBoard: UIStoryboard) {
+        self.storyBoard = storyBoard
+        self.navigationController = navigationController
+    }
     
     func toDetail() {
-        
+        let vc = storyBoard.instantiateViewController(ofType: FollowerDetailViewController.self)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

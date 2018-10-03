@@ -13,9 +13,22 @@
 		DE5076B12163C33500BF325B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5076B02163C33500BF325B /* Assets.xcassets */; };
 		DE5076B42163C33500BF325B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5076B22163C33500BF325B /* LaunchScreen.storyboard */; };
 		DE5076BE2163D01200BF325B /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076BD2163D01200BF325B /* FollowersViewController.swift */; };
-		DE5076C02163D02200BF325B /* FollowersViewMolde.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076BF2163D02200BF325B /* FollowersViewMolde.swift */; };
+		DE5076C02163D02200BF325B /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076BF2163D02200BF325B /* FollowersViewModel.swift */; };
 		DE5076C22163D02F00BF325B /* FollowersNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076C12163D02F00BF325B /* FollowersNavigator.swift */; };
 		DE5076C52163D0F400BF325B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076C42163D0F400BF325B /* User.swift */; };
+		DE5076C72164CF1D00BF325B /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076C62164CF1D00BF325B /* Club.swift */; };
+		DE5076CA2164D44300BF325B /* TonsserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076C92164D44300BF325B /* TonsserAPI.swift */; };
+		DE5076CD2164F8F800BF325B /* FollowersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076CC2164F8F800BF325B /* FollowersResponse.swift */; };
+		DE5076D02164FF7500BF325B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076CF2164FF7500BF325B /* ViewModelType.swift */; };
+		DE5076D32165048C00BF325B /* FollowerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076D22165048C00BF325B /* FollowerDetailViewController.swift */; };
+		DE5076D5216504A200BF325B /* FollowerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076D4216504A200BF325B /* FollowerDetailViewModel.swift */; };
+		DE5076D7216504B500BF325B /* FollowerNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076D6216504B500BF325B /* FollowerNavigator.swift */; };
+		DE5076DA216508F800BF325B /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076D9216508F800BF325B /* Observable+Ext.swift */; };
+		DE5076DE21650AC100BF325B /* FollowerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076DC21650AC100BF325B /* FollowerCollectionViewCell.swift */; };
+		DE5076DF21650AC100BF325B /* FollowerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE5076DD21650AC100BF325B /* FollowerCollectionViewCell.xib */; };
+		DE5076E121650DFA00BF325B /* FollowerItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */; };
+		DE5076E321650EF900BF325B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E221650EF900BF325B /* ActivityIndicator.swift */; };
+		DE5076E5216516B800BF325B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E4216516B800BF325B /* Reusable.swift */; };
 		E2FDDBDC12D61151336B5F77 /* Pods_ListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE552434A6420D0685CD71 /* Pods_ListChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,9 +43,22 @@
 		DE5076B32163C33500BF325B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE5076B52163C33500BF325B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5076BD2163D01200BF325B /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
-		DE5076BF2163D02200BF325B /* FollowersViewMolde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewMolde.swift; sourceTree = "<group>"; };
+		DE5076BF2163D02200BF325B /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
 		DE5076C12163D02F00BF325B /* FollowersNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersNavigator.swift; sourceTree = "<group>"; };
 		DE5076C42163D0F400BF325B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DE5076C62164CF1D00BF325B /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		DE5076C92164D44300BF325B /* TonsserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonsserAPI.swift; sourceTree = "<group>"; };
+		DE5076CC2164F8F800BF325B /* FollowersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersResponse.swift; sourceTree = "<group>"; };
+		DE5076CF2164FF7500BF325B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		DE5076D22165048C00BF325B /* FollowerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerDetailViewController.swift; path = ListChallenge/Scenes/FollowerDetail/FollowerDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		DE5076D4216504A200BF325B /* FollowerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerDetailViewModel.swift; path = ListChallenge/Scenes/FollowerDetail/FollowerDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
+		DE5076D6216504B500BF325B /* FollowerNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FollowerNavigator.swift; path = ListChallenge/Scenes/FollowerDetail/FollowerNavigator.swift; sourceTree = SOURCE_ROOT; };
+		DE5076D9216508F800BF325B /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
+		DE5076DC21650AC100BF325B /* FollowerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE5076DD21650AC100BF325B /* FollowerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowerCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerItemViewModel.swift; sourceTree = "<group>"; };
+		DE5076E221650EF900BF325B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		DE5076E4216516B800BF325B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		F1B2856F08C47547EB103621 /* Pods-ListChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +112,9 @@
 		DE5076A82163C33400BF325B /* ListChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				DE5076D8216508E800BF325B /* Utils */,
+				DE5076CE2164FF5D00BF325B /* Common */,
+				DE5076C82164D41E00BF325B /* Providers */,
 				DE5076C32163D0D500BF325B /* Models */,
 				DE5076BB2163CFB700BF325B /* Scenes */,
 				DE5076A92163C33400BF325B /* AppDelegate.swift */,
@@ -101,6 +130,7 @@
 		DE5076BB2163CFB700BF325B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DE5076D1216503F900BF325B /* FollowerDetail */,
 				DE5076BC2163CFCD00BF325B /* Followers */,
 			);
 			path = Scenes;
@@ -109,8 +139,9 @@
 		DE5076BC2163CFCD00BF325B /* Followers */ = {
 			isa = PBXGroup;
 			children = (
+				DE5076DB21650A9C00BF325B /* Cells */,
 				DE5076BD2163D01200BF325B /* FollowersViewController.swift */,
-				DE5076BF2163D02200BF325B /* FollowersViewMolde.swift */,
+				DE5076BF2163D02200BF325B /* FollowersViewModel.swift */,
 				DE5076C12163D02F00BF325B /* FollowersNavigator.swift */,
 			);
 			path = Followers;
@@ -119,9 +150,66 @@
 		DE5076C32163D0D500BF325B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE5076CB2164F8D300BF325B /* Responses */,
 				DE5076C42163D0F400BF325B /* User.swift */,
+				DE5076C62164CF1D00BF325B /* Club.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DE5076C82164D41E00BF325B /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076C92164D44300BF325B /* TonsserAPI.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		DE5076CB2164F8D300BF325B /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076CC2164F8F800BF325B /* FollowersResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		DE5076CE2164FF5D00BF325B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076CF2164FF7500BF325B /* ViewModelType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DE5076D1216503F900BF325B /* FollowerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076D22165048C00BF325B /* FollowerDetailViewController.swift */,
+				DE5076D4216504A200BF325B /* FollowerDetailViewModel.swift */,
+				DE5076D6216504B500BF325B /* FollowerNavigator.swift */,
+			);
+			name = FollowerDetail;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		DE5076D8216508E800BF325B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076D9216508F800BF325B /* Observable+Ext.swift */,
+				DE5076E221650EF900BF325B /* ActivityIndicator.swift */,
+				DE5076E4216516B800BF325B /* Reusable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DE5076DB21650A9C00BF325B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076DC21650AC100BF325B /* FollowerCollectionViewCell.swift */,
+				DE5076DD21650AC100BF325B /* FollowerCollectionViewCell.xib */,
+				DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5076DF21650AC100BF325B /* FollowerCollectionViewCell.xib in Resources */,
 				DE5076B42163C33500BF325B /* LaunchScreen.storyboard in Resources */,
 				DE5076B12163C33500BF325B /* Assets.xcassets in Resources */,
 				DE5076AF2163C33400BF325B /* Main.storyboard in Resources */,
@@ -220,6 +309,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -228,6 +319,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -245,11 +338,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE5076C22163D02F00BF325B /* FollowersNavigator.swift in Sources */,
-				DE5076C02163D02200BF325B /* FollowersViewMolde.swift in Sources */,
+				DE5076D5216504A200BF325B /* FollowerDetailViewModel.swift in Sources */,
+				DE5076C02163D02200BF325B /* FollowersViewModel.swift in Sources */,
+				DE5076D7216504B500BF325B /* FollowerNavigator.swift in Sources */,
 				DE5076C52163D0F400BF325B /* User.swift in Sources */,
+				DE5076CD2164F8F800BF325B /* FollowersResponse.swift in Sources */,
+				DE5076CA2164D44300BF325B /* TonsserAPI.swift in Sources */,
+				DE5076C72164CF1D00BF325B /* Club.swift in Sources */,
 				DE5076BE2163D01200BF325B /* FollowersViewController.swift in Sources */,
+				DE5076DE21650AC100BF325B /* FollowerCollectionViewCell.swift in Sources */,
+				DE5076D32165048C00BF325B /* FollowerDetailViewController.swift in Sources */,
+				DE5076E121650DFA00BF325B /* FollowerItemViewModel.swift in Sources */,
+				DE5076E5216516B800BF325B /* Reusable.swift in Sources */,
 				DE5076AC2163C33400BF325B /* ViewController.swift in Sources */,
+				DE5076D02164FF7500BF325B /* ViewModelType.swift in Sources */,
+				DE5076DA216508F800BF325B /* Observable+Ext.swift in Sources */,
 				DE5076AA2163C33400BF325B /* AppDelegate.swift in Sources */,
+				DE5076E321650EF900BF325B /* ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
