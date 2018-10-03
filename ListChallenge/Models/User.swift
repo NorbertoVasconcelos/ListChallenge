@@ -11,7 +11,7 @@ import ObjectMapper
 
 typealias JSONData = [String: Any]
 
-struct User: Mappable {
+public struct User: Mappable {
     var firstName: String = ""
     var lastName: String = ""
     var profilePicture: String?
@@ -21,9 +21,9 @@ struct User: Mappable {
     var isVerified: Bool = false
     var gender: String?
 
-    init?(map: Map) {}
+    public init?(map: Map) {}
     
-    mutating func mapping(map: Map) {
+    public mutating func mapping(map: Map) {
         firstName <- map["firstname"]
         lastName <- map["lastname"]
         profilePicture <- map["profile_picture"]

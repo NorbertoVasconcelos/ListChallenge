@@ -18,7 +18,7 @@ class FollowersViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let defafultCellHeight: CGFloat = 80
-    var viewModel: FollowersViewModel = FollowersViewModel()
+    var viewModel: FollowersViewModel = FollowersViewModel(navigator: FollowersNavigator())
     var followers: [User]?
     
     override func viewDidLoad() {
@@ -47,8 +47,9 @@ class FollowersViewController: UIViewController {
         let pull = colView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()
-        
-        let input = FollowersViewModel.Input(trigger: Driver.merge(viewWillAppear, pull))
+                
+        let input = FollowersViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
+                                             selection: colView.rx.itemSelected.asDriver())
         
         let output = viewModel.transform(input: input)
 

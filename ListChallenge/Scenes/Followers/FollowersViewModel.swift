@@ -13,14 +13,18 @@ import RxCocoa
 final class FollowersViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
+        let selection: Driver<IndexPath>
     }
     struct Output {
         let fetching: Driver<Bool>
         let followers: Driver<[FollowerItemViewModel]>
+        let selectedFollower: Driver<User>
     }
     
-    init() {
-        
+    var navigator: FollowersNavigator
+    
+    init(navigator: FollowersNavigator) {
+        self.navigator = navigator
     }
     
     func getFollowers() -> Single<FollowersResponse> {
@@ -52,7 +56,14 @@ final class FollowersViewModel: ViewModelType {
         
         let fetching = activityIndicator.asDriver()
         
+        let selectedFollower = input.selection
+            .withLatestFrom(followers) { (indexPath, followers) -> User in
+                return followers[indexPath.row].user
+            }
+            .do(onNext: navigator.toDetail)
+        
         return Output(fetching: fetching,
-                      followers: followers)
+                      followers: followers,
+                      selectedFollower: selectedFollower)
     }
 }

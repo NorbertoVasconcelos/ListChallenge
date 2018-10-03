@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 protocol FollowersNavigator {
-    func toDetail()
+    func toFollowers()
+    func toDetail(_ user: User)
 }
 
-class DefaultFollowersNavitor: FollowersNavigator {
+class DefaultFollowersNavigator: FollowersNavigator {
     
     private let storyBoard: UIStoryboard
     private let navigationController: UINavigationController
@@ -23,7 +24,12 @@ class DefaultFollowersNavitor: FollowersNavigator {
         self.navigationController = navigationController
     }
     
-    func toDetail() {
+    func toFollowers() {
+        let vc = storyBoard.instantiateViewController(ofType: FollowersViewController.self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func toDetail(_ user: User) {
         let vc = storyBoard.instantiateViewController(ofType: FollowerDetailViewController.self)
         navigationController.pushViewController(vc, animated: true)
     }

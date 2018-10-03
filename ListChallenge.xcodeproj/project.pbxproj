@@ -29,6 +29,8 @@
 		DE5076E121650DFA00BF325B /* FollowerItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */; };
 		DE5076E321650EF900BF325B /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E221650EF900BF325B /* ActivityIndicator.swift */; };
 		DE5076E5216516B800BF325B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E4216516B800BF325B /* Reusable.swift */; };
+		DE5076E7216533A800BF325B /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E6216533A800BF325B /* Application.swift */; };
+		DE5076EB2165351A00BF325B /* FollowersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076EA2165351A00BF325B /* FollowersUseCase.swift */; };
 		E2FDDBDC12D61151336B5F77 /* Pods_ListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE552434A6420D0685CD71 /* Pods_ListChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerItemViewModel.swift; sourceTree = "<group>"; };
 		DE5076E221650EF900BF325B /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		DE5076E4216516B800BF325B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		DE5076E6216533A800BF325B /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		DE5076EA2165351A00BF325B /* FollowersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersUseCase.swift; sourceTree = "<group>"; };
 		F1B2856F08C47547EB103621 /* Pods-ListChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +127,7 @@
 				DE5076B02163C33500BF325B /* Assets.xcassets */,
 				DE5076B22163C33500BF325B /* LaunchScreen.storyboard */,
 				DE5076B52163C33500BF325B /* Info.plist */,
+				DE5076E6216533A800BF325B /* Application.swift */,
 			);
 			path = ListChallenge;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 		DE5076C82164D41E00BF325B /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				DE5076E92165350500BF325B /* UseCases */,
 				DE5076C92164D44300BF325B /* TonsserAPI.swift */,
 			);
 			path = Providers;
@@ -210,6 +216,14 @@
 				DE5076E021650DFA00BF325B /* FollowerItemViewModel.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE5076E92165350500BF325B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				DE5076EA2165351A00BF325B /* FollowersUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +354,7 @@
 				DE5076C22163D02F00BF325B /* FollowersNavigator.swift in Sources */,
 				DE5076D5216504A200BF325B /* FollowerDetailViewModel.swift in Sources */,
 				DE5076C02163D02200BF325B /* FollowersViewModel.swift in Sources */,
+				DE5076E7216533A800BF325B /* Application.swift in Sources */,
 				DE5076D7216504B500BF325B /* FollowerNavigator.swift in Sources */,
 				DE5076C52163D0F400BF325B /* User.swift in Sources */,
 				DE5076CD2164F8F800BF325B /* FollowersResponse.swift in Sources */,
@@ -355,6 +370,7 @@
 				DE5076DA216508F800BF325B /* Observable+Ext.swift in Sources */,
 				DE5076AA2163C33400BF325B /* AppDelegate.swift in Sources */,
 				DE5076E321650EF900BF325B /* ActivityIndicator.swift in Sources */,
+				DE5076EB2165351A00BF325B /* FollowersUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
