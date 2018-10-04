@@ -6,4 +6,5 @@ target 'ListChallenge' do
     pod 'RxCocoa'
     pod 'Moya/RxSwift', '~> 11.0'
     pod 'Moya-ObjectMapper/RxSwift'
+    pod 'Kingfisher', '~> 4.0'
 end

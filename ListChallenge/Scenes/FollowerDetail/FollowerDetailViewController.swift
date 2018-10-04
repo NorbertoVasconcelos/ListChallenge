@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FollowerDetailViewController: UIViewController {
+class FollowerDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
+    @IBOutlet weak var imgUser: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -22,10 +22,8 @@ final class Application {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = UINavigationController()
         let navigator = DefaultFollowersNavigator(navigationController: navigationController,
-                                                  storyBoard: storyboard)
-        
-        let vc = storyboard.instantiateViewController(ofType: FollowersViewController.self)
-        vc.viewModel = FollowersViewModel(navigator: navigator)
+                                                  storyBoard: storyboard,
+                                                  useCase: useCaseProvider)
         
         window.rootViewController = navigationController
         

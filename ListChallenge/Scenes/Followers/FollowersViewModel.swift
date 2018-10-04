@@ -22,36 +22,20 @@ final class FollowersViewModel: ViewModelType {
     }
     
     var navigator: FollowersNavigator
+    var useCase: FollowersUseCase
     
-    init(navigator: FollowersNavigator) {
+    init(useCase: FollowersUseCase, navigator: FollowersNavigator) {
         self.navigator = navigator
-    }
-    
-    func getFollowers() -> Single<FollowersResponse> {
-        return tonsserProvider.rx
-            .request(.getFollowers())
-            .mapObject(FollowersResponse.self)
-        
-//            .subscribe { event in
-//                switch event {
-//                case .success(let response):
-//                    self.followers = response.followers
-//                    print("SUCCESS!")
-//                    break
-//                case .error(let error):
-//                    print(error)
-//                    print("ERROR!")
-//                }
-//        }
+        self.useCase = useCase
     }
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
         let followers = input.trigger.flatMapLatest { _ in
-            return self.getFollowers()
+            return self.useCase.followers()
                 .trackActivity(activityIndicator)
                 .asDriverOnErrorJustComplete()
-                .map { $0.followers.map { FollowerItemViewModel(with: $0) } }
+                .map { $0.map { FollowerItemViewModel(with: $0) } }
         }
         
         let fetching = activityIndicator.asDriver()
@@ -61,7 +45,7 @@ final class FollowersViewModel: ViewModelType {
                 return followers[indexPath.row].user
             }
             .do(onNext: navigator.toDetail)
-        
+                
         return Output(fetching: fetching,
                       followers: followers,
                       selectedFollower: selectedFollower)

@@ -18,14 +18,17 @@ class DefaultFollowersNavigator: FollowersNavigator {
     
     private let storyBoard: UIStoryboard
     private let navigationController: UINavigationController
+    private let useCase: FollowersUseCase
     
-    init(navigationController: UINavigationController, storyBoard: UIStoryboard) {
+    init(navigationController: UINavigationController, storyBoard: UIStoryboard, useCase: FollowersUseCase) {
         self.storyBoard = storyBoard
         self.navigationController = navigationController
+        self.useCase = useCase
     }
     
     func toFollowers() {
         let vc = storyBoard.instantiateViewController(ofType: FollowersViewController.self)
+        vc.viewModel = FollowersViewModel(useCase: useCase, navigator: self as FollowersNavigator)
         navigationController.pushViewController(vc, animated: true)
     }
     

@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Followers View Controller-->
+        <!--Followers-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FollowersViewController" customModule="ListChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FollowersViewController" title="Followers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="FollowersViewController" customModule="ListChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bPp-S0-31S">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RDx-ds-hnL">
                                     <size key="itemSize" width="50" height="50"/>
@@ -38,12 +38,46 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="colView" destination="bPp-S0-31S" id="aqF-tX-ceL"/>
+                        <segue destination="R7T-Ri-JJT" kind="presentation" identifier="segueDetail" modalPresentationStyle="overFullScreen" id="8Rs-07-HnN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="164" y="21"/>
+        </scene>
+        <!--Follower Detail View Controller-->
+        <scene sceneID="6ku-O1-nWU">
+            <objects>
+                <viewController storyboardIdentifier="FollowerDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R7T-Ri-JJT" customClass="FollowerDetailViewController" customModule="ListChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="91d-rF-5OH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="99" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-uu-CwO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="EBk-xc-uqe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fDt-uu-CwO" firstAttribute="leading" secondItem="V5i-KZ-vkA" secondAttribute="leading" id="mX2-0W-mJa"/>
+                            <constraint firstItem="fDt-uu-CwO" firstAttribute="top" secondItem="V5i-KZ-vkA" secondAttribute="top" id="sRv-9b-hxn"/>
+                            <constraint firstItem="fDt-uu-CwO" firstAttribute="trailing" secondItem="V5i-KZ-vkA" secondAttribute="trailing" id="vNE-om-1C1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V5i-KZ-vkA"/>
+                    </view>
+                    <connections>
+                        <outlet property="imgUser" destination="fDt-uu-CwO" id="DnT-tW-0I1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5qx-VA-BEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.65217391304361" y="20.758928571428569"/>
         </scene>
     </scenes>
 </document>

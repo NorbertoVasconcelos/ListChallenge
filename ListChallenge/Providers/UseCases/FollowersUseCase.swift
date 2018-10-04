@@ -21,10 +21,18 @@ final class FollowersUseCase: FollowersUseCaseProtocol {
     }
 
     func followers() -> Observable<[User]> {
-        
+        return tonsserProvider.rx
+            .request(.getFollowers())
+            .mapObject(FollowersResponse.self)
+            .asObservable()
+            .map { $0.followers }
     }
     
     func followersFromSlug(_ slug: String) -> Observable<[User]> {
-        
+        return tonsserProvider.rx
+        .request(.getFollowersFromCurrentSlug(slug))
+        .mapObject(FollowersResponse.self)
+        .asObservable()
+        .map { $0.followers }
     }
 }

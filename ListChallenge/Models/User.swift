@@ -17,6 +17,7 @@ public struct User: Mappable {
     var profilePicture: String?
     var role: String?
     var countryID: Int?
+    var primaryPosition: PrimaryPosition?
     var club: Club?
     var isVerified: Bool = false
     var gender: String?
@@ -29,6 +30,7 @@ public struct User: Mappable {
         profilePicture <- map["profile_picture"]
         role <- map["role"]
         countryID <- map["country_id"]
+        primaryPosition <- map["primary_position"]
         club <- map["club"]
         isVerified <- map["is_verified"]
         gender <- map["gender"]

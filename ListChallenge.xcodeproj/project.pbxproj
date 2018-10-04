@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DE5076AA2163C33400BF325B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076A92163C33400BF325B /* AppDelegate.swift */; };
-		DE5076AC2163C33400BF325B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076AB2163C33400BF325B /* ViewController.swift */; };
 		DE5076AF2163C33400BF325B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5076AD2163C33400BF325B /* Main.storyboard */; };
 		DE5076B12163C33500BF325B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5076B02163C33500BF325B /* Assets.xcassets */; };
 		DE5076B42163C33500BF325B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5076B22163C33500BF325B /* LaunchScreen.storyboard */; };
@@ -31,6 +30,9 @@
 		DE5076E5216516B800BF325B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E4216516B800BF325B /* Reusable.swift */; };
 		DE5076E7216533A800BF325B /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076E6216533A800BF325B /* Application.swift */; };
 		DE5076EB2165351A00BF325B /* FollowersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076EA2165351A00BF325B /* FollowersUseCase.swift */; };
+		DE5076EF216654D500BF325B /* PrimaryPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076EE216654D500BF325B /* PrimaryPosition.swift */; };
+		DE5076F12166581A00BF325B /* BouncyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076F02166581A00BF325B /* BouncyLayout.swift */; };
+		DE5076F32166642C00BF325B /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076F22166642C00BF325B /* PopAnimator.swift */; };
 		E2FDDBDC12D61151336B5F77 /* Pods_ListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE552434A6420D0685CD71 /* Pods_ListChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +41,6 @@
 		4CBE552434A6420D0685CD71 /* Pods_ListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5076A62163C33400BF325B /* ListChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5076A92163C33400BF325B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE5076AB2163C33400BF325B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DE5076AE2163C33400BF325B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE5076B02163C33500BF325B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE5076B32163C33500BF325B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +64,9 @@
 		DE5076E4216516B800BF325B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		DE5076E6216533A800BF325B /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DE5076EA2165351A00BF325B /* FollowersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersUseCase.swift; sourceTree = "<group>"; };
+		DE5076EE216654D500BF325B /* PrimaryPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryPosition.swift; sourceTree = "<group>"; };
+		DE5076F02166581A00BF325B /* BouncyLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyLayout.swift; sourceTree = "<group>"; };
+		DE5076F22166642C00BF325B /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		F1B2856F08C47547EB103621 /* Pods-ListChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,12 +126,11 @@
 				DE5076C32163D0D500BF325B /* Models */,
 				DE5076BB2163CFB700BF325B /* Scenes */,
 				DE5076A92163C33400BF325B /* AppDelegate.swift */,
-				DE5076AB2163C33400BF325B /* ViewController.swift */,
-				DE5076AD2163C33400BF325B /* Main.storyboard */,
-				DE5076B02163C33500BF325B /* Assets.xcassets */,
-				DE5076B22163C33500BF325B /* LaunchScreen.storyboard */,
-				DE5076B52163C33500BF325B /* Info.plist */,
 				DE5076E6216533A800BF325B /* Application.swift */,
+				DE5076AD2163C33400BF325B /* Main.storyboard */,
+				DE5076B22163C33500BF325B /* LaunchScreen.storyboard */,
+				DE5076B02163C33500BF325B /* Assets.xcassets */,
+				DE5076B52163C33500BF325B /* Info.plist */,
 			);
 			path = ListChallenge;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				DE5076CB2164F8D300BF325B /* Responses */,
 				DE5076C42163D0F400BF325B /* User.swift */,
 				DE5076C62164CF1D00BF325B /* Club.swift */,
+				DE5076EE216654D500BF325B /* PrimaryPosition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DE5076CF2164FF7500BF325B /* ViewModelType.swift */,
+				DE5076F22166642C00BF325B /* PopAnimator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				DE5076D9216508F800BF325B /* Observable+Ext.swift */,
 				DE5076E221650EF900BF325B /* ActivityIndicator.swift */,
 				DE5076E4216516B800BF325B /* Reusable.swift */,
+				DE5076F02166581A00BF325B /* BouncyLayout.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -332,6 +339,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -352,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE5076C22163D02F00BF325B /* FollowersNavigator.swift in Sources */,
+				DE5076EF216654D500BF325B /* PrimaryPosition.swift in Sources */,
 				DE5076D5216504A200BF325B /* FollowerDetailViewModel.swift in Sources */,
 				DE5076C02163D02200BF325B /* FollowersViewModel.swift in Sources */,
 				DE5076E7216533A800BF325B /* Application.swift in Sources */,
@@ -362,10 +371,11 @@
 				DE5076C72164CF1D00BF325B /* Club.swift in Sources */,
 				DE5076BE2163D01200BF325B /* FollowersViewController.swift in Sources */,
 				DE5076DE21650AC100BF325B /* FollowerCollectionViewCell.swift in Sources */,
+				DE5076F12166581A00BF325B /* BouncyLayout.swift in Sources */,
 				DE5076D32165048C00BF325B /* FollowerDetailViewController.swift in Sources */,
+				DE5076F32166642C00BF325B /* PopAnimator.swift in Sources */,
 				DE5076E121650DFA00BF325B /* FollowerItemViewModel.swift in Sources */,
 				DE5076E5216516B800BF325B /* Reusable.swift in Sources */,
-				DE5076AC2163C33400BF325B /* ViewController.swift in Sources */,
 				DE5076D02164FF7500BF325B /* ViewModelType.swift in Sources */,
 				DE5076DA216508F800BF325B /* Observable+Ext.swift in Sources */,
 				DE5076AA2163C33400BF325B /* AppDelegate.swift in Sources */,
