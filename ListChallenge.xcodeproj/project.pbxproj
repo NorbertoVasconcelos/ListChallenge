@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AD70FA9216AB5E800ADA292 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD70FA8216AB5E800ADA292 /* ErrorTracker.swift */; };
 		DE5076AA2163C33400BF325B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5076A92163C33400BF325B /* AppDelegate.swift */; };
 		DE5076AF2163C33400BF325B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5076AD2163C33400BF325B /* Main.storyboard */; };
 		DE5076B12163C33500BF325B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5076B02163C33500BF325B /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		3633E90D39ED723CB8D803B0 /* Pods-ListChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-ListChallenge/Pods-ListChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		4CBE552434A6420D0685CD71 /* Pods_ListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD70FA8216AB5E800ADA292 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		DE5076A62163C33400BF325B /* ListChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5076A92163C33400BF325B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5076AE2163C33400BF325B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				DE5076E221650EF900BF325B /* ActivityIndicator.swift */,
 				DE5076E4216516B800BF325B /* Reusable.swift */,
 				DE5076F02166581A00BF325B /* BouncyLayout.swift */,
+				5AD70FA8216AB5E800ADA292 /* ErrorTracker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				DE5076C72164CF1D00BF325B /* Club.swift in Sources */,
 				DE5076BE2163D01200BF325B /* FollowersViewController.swift in Sources */,
 				DE5076DE21650AC100BF325B /* FollowerCollectionViewCell.swift in Sources */,
+				5AD70FA9216AB5E800ADA292 /* ErrorTracker.swift in Sources */,
 				DE5076F12166581A00BF325B /* BouncyLayout.swift in Sources */,
 				DE5076D32165048C00BF325B /* FollowerDetailViewController.swift in Sources */,
 				DE5076F32166642C00BF325B /* PopAnimator.swift in Sources */,

@@ -33,6 +33,7 @@ final class FollowersViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
+        let errorTracker = ErrorTracker()
         let fetching = activityIndicator.asDriver()
         
         let trigger = input.trigger.do(onNext: {
@@ -53,6 +54,7 @@ final class FollowersViewModel: ViewModelType {
             
             return self.useCase.followers(slug)
                 .observeOn(MainScheduler.asyncInstance)
+                .trackError(errorTracker)
                 .trackActivity(activityIndicator)
                 .asDriverOnErrorJustComplete()
                 .map { $0.map { FollowerItemViewModel(with: $0) } }
