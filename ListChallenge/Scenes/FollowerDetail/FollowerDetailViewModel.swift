@@ -12,22 +12,31 @@ import RxCocoa
 
 final class FollowerDetailViewModel: ViewModelType {
     struct Input {
-        let trigger: Driver<Void>
-        let close: Driver<Void>
+        var trigger: Driver<Void>
+        var close: Driver<Void>
     }
     struct Output {
-        
+        var follower: Driver<User>
+        var close: Driver<Void>
     }
     
     var navigator: FollowerNavigator
+    var user: User
     
-    init(navigator: FollowerNavigator) {
+    init(navigator: FollowerNavigator, user: User) {
         self.navigator = navigator
+        self.user = user
     }
     
     func transform(input: Input) -> Output {
+        let follower = input
+            .trigger
+            .map { [unowned self] in
+                return self.user
+            }
+            .asDriver()
         
-        
-        return Output()
+        let close = input.close.do(onNext: {self.navigator.toFollowers()})
+        return Output(follower: follower, close: close)
     }
 }

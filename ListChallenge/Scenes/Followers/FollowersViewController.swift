@@ -37,6 +37,11 @@ class FollowersViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        colView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func configureCollectionView() {
         colView.delegate = self
         colView.collectionViewLayout = BouncyLayout(style: .prominent)
@@ -52,11 +57,6 @@ class FollowersViewController: UIViewController {
         
         let viewDidLoad = Driver.just(())
         
-//        let viewWillAppear = rx
-//            .sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-//            .asDriverOnErrorJustComplete()
-//            .mapToVoid()
-        
         let pull = colView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()
@@ -69,7 +69,7 @@ class FollowersViewController: UIViewController {
                 self.selectedFrame = self.colView.convert(theAttributes.frame, to: self.colView.superview)
                 
                 if let cell = self.colView.cellForItem(at: indexPath) as? FollowerCollectionViewCell {
-                    self.transition = PopAnimator(duration: 0.3, isPresenting: true, originFrame: self.selectedFrame, image: cell.imgUser.image ?? UIImage(named: "default_user")!)
+                    self.transition = PopAnimator(duration: 0.5, isPresenting: true, originFrame: self.selectedFrame, image: cell.imgUser.image ?? UIImage(named: "default_user")!)
                 }
             })
             .asDriverOnErrorJustComplete()
@@ -87,12 +87,6 @@ class FollowersViewController: UIViewController {
                                              isNearBottom: isNearBottom)
         
         let output = viewModel.transform(input: input)
-        
-//        output.initialFollowers.drive(colView.rx.items(cellIdentifier: FollowerCollectionViewCell.reuseID, cellType: FollowerCollectionViewCell.self)) {
-//            index, model, cell in
-//            cell.bindViewModel(model)
-//            }
-//            .disposed(by: disposeBag)
 
         output.followers.drive(colView.rx.items(cellIdentifier: FollowerCollectionViewCell.reuseID, cellType: FollowerCollectionViewCell.self)) {
             index, model, cell in
@@ -128,12 +122,6 @@ extension FollowersViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return defaultCellSpacing
-    }
-    
-    private func shouldLoadMore(scrollView: UIScrollView) -> Bool {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        return offsetY > contentHeight - scrollView.frame.size.height
     }
 }
 

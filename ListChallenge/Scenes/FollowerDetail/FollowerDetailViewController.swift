@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class FollowerDetailViewController: UIViewController {
 
+    @IBOutlet weak var container: UIView!
+    @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var imgUser: UIImageView! {
         didSet {
             imgUser.layer.cornerRadius = 8
@@ -26,15 +30,35 @@ class FollowerDetailViewController: UIViewController {
         }
     }
     
-    var user: User?
+    private let disposeBag = DisposeBag()
+    var viewModel: FollowerDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        if let u = user {
-            bind(u)
+        bindViewModel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        container.isHidden = false
+    }
+    
+    private func bindViewModel() {
+        guard let viewModel = viewModel else {
+            return
         }
+        
+        let viewDidLoad = Driver.just(())
+        let close = btnClose.rx.tap.asDriver()
+        
+        let input = FollowerDetailViewModel.Input(trigger: viewDidLoad, close: close)
+        let output = viewModel.transform(input: input)
+        
+        output.follower.map { self.bind($0) }
+        .drive()
+        .disposed(by: disposeBag)
+        
+        output.close.drive().disposed(by: disposeBag)
     }
     
     func bind(_ user: User) {
@@ -47,19 +71,4 @@ class FollowerDetailViewController: UIViewController {
         }
         imgVerified.image = user.isVerified ? UIImage(named: "ic_verified") : UIImage(named: "ic_cross")
     }
-    
-    @IBAction func btnDismissPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
