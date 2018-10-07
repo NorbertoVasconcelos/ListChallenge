@@ -14,6 +14,7 @@ final class FollowersViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
         let selection: Driver<IndexPath>
+        let isNearBottom: Driver<Void>
     }
     struct Output {
         let fetching: Driver<Bool>
@@ -23,6 +24,7 @@ final class FollowersViewModel: ViewModelType {
     
     var navigator: FollowersNavigator
     var useCase: FollowersUseCase
+    var allFollowers: [FollowerItemViewModel] = []
     
     init(useCase: FollowersUseCase, navigator: FollowersNavigator) {
         self.navigator = navigator
@@ -31,21 +33,37 @@ final class FollowersViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
-        let followers = input.trigger.flatMapLatest { _ in
-            return self.useCase.followers()
-                .trackActivity(activityIndicator)
-                .asDriverOnErrorJustComplete()
-                .map { $0.map { FollowerItemViewModel(with: $0) } }
-        }
-        
         let fetching = activityIndicator.asDriver()
+        
+        let followers = Driver
+            .combineLatest(input.trigger, input.isNearBottom)
+            .flatMap { (_, _) -> Driver<[FollowerItemViewModel]> in
+    
+            let slug = self.allFollowers.last?.user.slug ?? ""
+
+                return self.useCase.followers(slug)
+                    .observeOn(MainScheduler.asyncInstance)
+                    .trackActivity(activityIndicator)
+                    .asDriverOnErrorJustComplete()
+                    .map { $0.map { FollowerItemViewModel(with: $0) } }
+                    .map { [weak self] items in
+                        guard self != nil else {
+                            return []
+                        }
+                        var mutableList: [FollowerItemViewModel] = []
+                        mutableList.append(contentsOf: self!.allFollowers)
+                        mutableList.append(contentsOf: items)
+                        self?.allFollowers = mutableList
+                        return mutableList
+                    }
+        }
         
         let selectedFollower = input.selection
             .withLatestFrom(followers) { (indexPath, followers) -> User in
                 return followers[indexPath.row].user
             }
             .do(onNext: navigator.toDetail)
-                
+        
         return Output(fetching: fetching,
                       followers: followers,
                       selectedFollower: selectedFollower)

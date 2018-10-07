@@ -27,34 +27,36 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let container = transitionContext.containerView
         
-        guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) else { return }
-        guard let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) else { return }
+        guard let fromView = transitionContext.view(forKey: .from) else { return }
+        guard let toView = transitionContext.view(forKey: .to) else { return }
         
         self.isPresenting ? container.addSubview(toView) : container.insertSubview(toView, belowSubview: fromView)
-        
+
         let detailView = isPresenting ? toView : fromView
-        
-        guard let artwork = detailView.viewWithTag(CustomAnimatorTag) as? UIImageView else { return }
-        artwork.image = image
-        artwork.alpha = 0
-        
-        let transitionImageView = UIImageView(frame: isPresenting ? originFrame : artwork.frame)
+
+        guard let userImage = detailView.viewWithTag(CustomAnimatorTag) as? UIImageView else { return }
+        userImage.image = image
+        userImage.alpha = 0
+
+        let transitionImageView = UIImageView(frame: isPresenting ? originFrame : userImage.frame)
         transitionImageView.image = image
-        
+        transitionImageView.clipsToBounds = true
+        transitionImageView.layer.cornerRadius = 8
+
         container.addSubview(transitionImageView)
-        
-        toView.frame = isPresenting ?  CGRect(x: fromView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height) : toView.frame
+
+        toView.frame = isPresenting ?  CGRect(x: 0, y: fromView.frame.height, width: toView.frame.width, height: toView.frame.height) : toView.frame
         toView.alpha = isPresenting ? 0 : 1
         toView.layoutIfNeeded()
-        
+
         UIView.animate(withDuration: duration, animations: {
-            transitionImageView.frame = self.isPresenting ? artwork.frame : self.originFrame
-            detailView.frame = self.isPresenting ? fromView.frame : CGRect(x: toView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height)
+            transitionImageView.frame = self.isPresenting ? userImage.frame : self.originFrame
+            detailView.frame = self.isPresenting ? fromView.frame : CGRect(x: 0, y: toView.frame.height, width: toView.frame.width, height: toView.frame.height)
             detailView.alpha = self.isPresenting ? 1 : 0
         }, completion: { (finished) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             transitionImageView.removeFromSuperview()
-            artwork.alpha = 1
+            userImage.alpha = 1
         })
     }
     

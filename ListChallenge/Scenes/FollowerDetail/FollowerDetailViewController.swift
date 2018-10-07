@@ -8,17 +8,50 @@
 
 import UIKit
 
-class FollowerDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class FollowerDetailViewController: UIViewController {
 
-    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var imgUser: UIImageView! {
+        didSet {
+            imgUser.layer.cornerRadius = 8
+        }
+    }
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblRole: UILabel!
+    @IBOutlet weak var lblGender: UILabel!
+    @IBOutlet weak var imgVerified: UIImageView!
+    @IBOutlet weak var lblClub: UILabel!
+    @IBOutlet weak var imgClub: UIImageView! {
+        didSet {
+            imgClub.layer.cornerRadius = 8
+        }
+    }
+    
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let u = user {
+            bind(u)
+        }
     }
     
-
+    func bind(_ user: User) {
+        lblName.text = "\(user.firstName) \(user.lastName)"
+        lblRole.text = user.primaryPosition?.name.uppercased()
+        lblGender.text = user.gender?.uppercased()
+        lblClub.text = user.club?.name
+        if let logo = URL(string: user.club?.logoURL ?? "") {
+            imgClub.kf.setImage(with: logo)
+        }
+        imgVerified.image = user.isVerified ? UIImage(named: "ic_verified") : UIImage(named: "ic_cross")
+    }
+    
+    @IBAction func btnDismissPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

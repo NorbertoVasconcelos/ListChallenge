@@ -10,8 +10,7 @@ import Foundation
 import RxSwift
 
 public protocol FollowersUseCaseProtocol {
-    func followers() -> Observable<[User]>
-    func followersFromSlug(_ slug: String) -> Observable<[User]>
+    func followers(_ slug: String) -> Observable<[User]>
 }
 
 final class FollowersUseCase: FollowersUseCaseProtocol {
@@ -20,19 +19,11 @@ final class FollowersUseCase: FollowersUseCaseProtocol {
         
     }
 
-    func followers() -> Observable<[User]> {
+    func followers(_ slug: String) -> Observable<[User]> {
         return tonsserProvider.rx
-            .request(.getFollowers())
+            .request(.getFollowers(slug))
             .mapObject(FollowersResponse.self)
             .asObservable()
             .map { $0.followers }
-    }
-    
-    func followersFromSlug(_ slug: String) -> Observable<[User]> {
-        return tonsserProvider.rx
-        .request(.getFollowersFromCurrentSlug(slug))
-        .mapObject(FollowersResponse.self)
-        .asObservable()
-        .map { $0.followers }
     }
 }

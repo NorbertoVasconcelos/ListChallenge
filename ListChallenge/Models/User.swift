@@ -12,6 +12,7 @@ import ObjectMapper
 typealias JSONData = [String: Any]
 
 public struct User: Mappable {
+    var slug: String = ""
     var firstName: String = ""
     var lastName: String = ""
     var profilePicture: String?
@@ -25,6 +26,7 @@ public struct User: Mappable {
     public init?(map: Map) {}
     
     public mutating func mapping(map: Map) {
+        slug <- map["slug"]
         firstName <- map["firstname"]
         lastName <- map["lastname"]
         profilePicture <- map["profile_picture"]

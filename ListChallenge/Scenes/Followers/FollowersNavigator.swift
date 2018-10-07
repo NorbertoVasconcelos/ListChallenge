@@ -34,6 +34,11 @@ class DefaultFollowersNavigator: FollowersNavigator {
     
     func toDetail(_ user: User) {
         let vc = storyBoard.instantiateViewController(ofType: FollowerDetailViewController.self)
-        navigationController.pushViewController(vc, animated: true)
+        vc.user = user
+        if let followersVC = navigationController.topViewController as? FollowersViewController {
+            vc.transitioningDelegate = followersVC
+        }
+        navigationController.present(vc, animated: true, completion: nil)
+//        navigationController.pushViewController(vc, animated: true)
     }
 }

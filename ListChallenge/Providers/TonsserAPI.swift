@@ -30,35 +30,40 @@ private extension String {
 }
 
 public enum Tonsser {
-    case getFollowers()
-    case getFollowersFromCurrentSlug(String)
+    case getFollowers(String)
 }
 
 extension Tonsser: TargetType {
     public var baseURL: URL { return URL(string: "http://api.tonsser.com")! }
     public var path: String {
         switch self {
-        case .getFollowers:
+        case .getFollowers(_):
             return "/49/users/christian-planck/followers"
-        case .getFollowersFromCurrentSlug(let slug):
-            return "/49/users/christian-planck/followers?current_follow_slug=\(slug.urlEscaped)"
         }
     }
     public var method: Moya.Method {
         return .get
     }
     
+    public var parameters: [String: Any] {
+        switch self {
+        case .getFollowers(let slug):
+            return slug.isEmpty ? [:] : ["current_follow_slug": slug.urlEscaped]
+        }
+    }
+    
     public var sampleData: Data {
         switch self {
-        case .getFollowers():
-            return "[]".data(using: String.Encoding.utf8)!
-        case .getFollowersFromCurrentSlug(_):
+        case .getFollowers(_):
             return "[]".data(using: String.Encoding.utf8)!
         }
     }
     
     public var task: Task {
-        return .requestPlain
+        switch self {
+        case .getFollowers(_):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        }
     }
     
     public var validationType: ValidationType {

@@ -31,3 +31,9 @@ extension ObservableType {
     }
     
 }
+
+extension UIScrollView {
+    func  isNearBottomEdge(edgeOffset: CGFloat = 500.0) -> Bool {
+        return self.contentOffset.y + self.frame.size.height + edgeOffset > self.contentSize.height
+    }
+}

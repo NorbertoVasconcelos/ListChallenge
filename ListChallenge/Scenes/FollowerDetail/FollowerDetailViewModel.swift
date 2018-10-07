@@ -7,3 +7,27 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+final class FollowerDetailViewModel: ViewModelType {
+    struct Input {
+        let trigger: Driver<Void>
+        let close: Driver<Void>
+    }
+    struct Output {
+        
+    }
+    
+    var navigator: FollowerNavigator
+    
+    init(navigator: FollowerNavigator) {
+        self.navigator = navigator
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        
+        return Output()
+    }
+}

@@ -7,3 +7,23 @@
 //
 
 import Foundation
+import UIKit
+
+protocol FollowerNavigator {
+    func toFollowers()
+}
+
+class DefaultFollowerNavigator: FollowerNavigator {
+    
+    private let storyBoard: UIStoryboard
+    private let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController, storyBoard: UIStoryboard) {
+        self.storyBoard = storyBoard
+        self.navigationController = navigationController
+    }
+    
+    func toFollowers() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+}

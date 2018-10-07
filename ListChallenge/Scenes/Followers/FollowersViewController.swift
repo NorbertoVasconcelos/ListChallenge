@@ -25,11 +25,9 @@ class FollowersViewController: UIViewController {
     var transition: PopAnimator?
     var selectedFrame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     var viewModel: FollowersViewModel?
-    var followers: [User]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.delegate = self
         configureCollectionView()
         bindViewModel()
     }
@@ -66,11 +64,24 @@ class FollowersViewController: UIViewController {
                 indexPath in
                 let theAttributes:UICollectionViewLayoutAttributes! = self.colView.layoutAttributesForItem(at: indexPath)
                 self.selectedFrame = self.colView.convert(theAttributes.frame, to: self.colView.superview)
+                
+                if let cell = self.colView.cellForItem(at: indexPath) as? FollowerCollectionViewCell {
+                    self.transition = PopAnimator(duration: 0.3, isPresenting: true, originFrame: self.selectedFrame, image: cell.imgUser.image ?? UIImage(named: "default_user")!)
+                }
             })
             .asDriverOnErrorJustComplete()
         
+        let isNearBottom = colView.rx
+            .contentOffset
+            .flatMap { _ in
+                self.colView.isNearBottomEdge() ? Observable.just(()) : Observable.empty()
+            }
+            .asDriverOnErrorJustComplete()
+            .throttle(5)
+        
         let input = FollowersViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
-                                             selection: itemSelected)
+                                             selection: itemSelected,
+                                             isNearBottom: isNearBottom)
         
         let output = viewModel.transform(input: input)
 
@@ -85,16 +96,9 @@ class FollowersViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.selectedFollower
-            .do(onNext: { user in
-                if let profilePicURL = URL(string: user.profilePicture ?? "https://www.ischool.berkeley.edu/sites/default/files/default_images/avatar.jpeg") {
-                    let imageView = UIImageView(frame: self.selectedFrame)
-                    imageView.kf.setImage(with: profilePicURL)
-                    self.transition = PopAnimator(duration: 0.5, isPresenting: true, originFrame: self.selectedFrame, image: imageView.image!)
-                }
-            })
-            .asDriver()
             .drive()
             .disposed(by: disposeBag)
+        
     }
 }
 
@@ -117,6 +121,11 @@ extension FollowersViewController: UICollectionViewDelegateFlowLayout {
         return defaultCellSpacing
     }
     
+    private func shouldLoadMore(scrollView: UIScrollView) -> Bool {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        return offsetY > contentHeight - scrollView.frame.size.height
+    }
 }
 
 // MARK: - Transition Animation -
@@ -129,3 +138,8 @@ extension FollowersViewController: UINavigationControllerDelegate {
     }
 }
 
+extension FollowersViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
+    }
+}
