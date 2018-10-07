@@ -102,6 +102,20 @@ class FollowersViewController: UIViewController {
             .drive()
             .disposed(by: disposeBag)
         
+        output.error
+            .do(onNext: {
+                [weak self] error in
+                self?.showAlert(with: error)
+            })
+            .drive()
+            .disposed(by: disposeBag)
+    }
+    
+    private func showAlert(with message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 }
 

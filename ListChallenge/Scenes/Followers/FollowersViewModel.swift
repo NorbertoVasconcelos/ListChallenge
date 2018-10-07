@@ -20,6 +20,7 @@ final class FollowersViewModel: ViewModelType {
         let fetching: Driver<Bool>
         let followers: Driver<[FollowerItemViewModel]>
         let selectedFollower: Driver<User>
+        let error: Driver<String>
     }
     
     var navigator: FollowersNavigator
@@ -72,12 +73,18 @@ final class FollowersViewModel: ViewModelType {
             }
         }
         
+        let error = errorTracker.map {
+            error -> String in
+            return error.localizedDescription
+        }
+        
         let selectedFollower = input.selection
             .map { self.allFollowers[$0.item].user }
             .do(onNext: navigator.toDetail)
         
         return Output(fetching: fetching,
                       followers: followers,
-                      selectedFollower: selectedFollower)
+                      selectedFollower: selectedFollower,
+                      error: error)
     }
 }
