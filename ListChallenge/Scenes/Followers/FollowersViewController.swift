@@ -25,6 +25,7 @@ class FollowersViewController: UIViewController {
     var transition: PopAnimator?
     var selectedFrame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     var viewModel: FollowersViewModel?
+    var nearBottomRange: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +50,12 @@ class FollowersViewController: UIViewController {
             return
         }
         
-        let viewWillAppear = rx
-            .sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .asDriverOnErrorJustComplete()
-            .mapToVoid()
+        let viewDidLoad = Driver.just(())
+        
+//        let viewWillAppear = rx
+//            .sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+//            .asDriverOnErrorJustComplete()
+//            .mapToVoid()
         
         let pull = colView.refreshControl!.rx
             .controlEvent(.valueChanged)
@@ -76,14 +79,20 @@ class FollowersViewController: UIViewController {
             .flatMap { _ in
                 self.colView.isNearBottomEdge() ? Observable.just(()) : Observable.empty()
             }
+            .startWith(())
             .asDriverOnErrorJustComplete()
-            .throttle(5)
         
-        let input = FollowersViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
+        let input = FollowersViewModel.Input(trigger: Driver.merge(viewDidLoad, pull),
                                              selection: itemSelected,
                                              isNearBottom: isNearBottom)
         
         let output = viewModel.transform(input: input)
+        
+//        output.initialFollowers.drive(colView.rx.items(cellIdentifier: FollowerCollectionViewCell.reuseID, cellType: FollowerCollectionViewCell.self)) {
+//            index, model, cell in
+//            cell.bindViewModel(model)
+//            }
+//            .disposed(by: disposeBag)
 
         output.followers.drive(colView.rx.items(cellIdentifier: FollowerCollectionViewCell.reuseID, cellType: FollowerCollectionViewCell.self)) {
             index, model, cell in

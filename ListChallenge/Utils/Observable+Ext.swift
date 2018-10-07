@@ -32,8 +32,17 @@ extension ObservableType {
     
 }
 
+public var nearZone: CGFloat = 32.0
 extension UIScrollView {
     func  isNearBottomEdge(edgeOffset: CGFloat = 500.0) -> Bool {
-        return self.contentOffset.y + self.frame.size.height + edgeOffset > self.contentSize.height
+        guard self.contentSize.height > nearZone else {
+            return false
+        }
+        let scrolled = self.contentOffset.y + self.frame.size.height + edgeOffset
+        let isNear = scrolled > self.contentSize.height
+        if isNear {
+            nearZone = scrolled + edgeOffset
+        }
+        return isNear
     }
 }

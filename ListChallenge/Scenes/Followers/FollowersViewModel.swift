@@ -35,34 +35,92 @@ final class FollowersViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let fetching = activityIndicator.asDriver()
         
-        let followers = Driver
-            .combineLatest(input.trigger, input.isNearBottom)
-            .flatMap { (_, _) -> Driver<[FollowerItemViewModel]> in
-    
+        let trigger = input.trigger.do(onNext: {
+            [weak self] in
+            nearZone = 32.0
+            self?.allFollowers = []
+        })
+        
+        let followers = Driver.combineLatest(trigger, input.isNearBottom)
+            .flatMap { _ -> Driver<[FollowerItemViewModel]> in
+            
             let slug = self.allFollowers.last?.user.slug ?? ""
-
-                return self.useCase.followers(slug)
-                    .observeOn(MainScheduler.asyncInstance)
-                    .trackActivity(activityIndicator)
-                    .asDriverOnErrorJustComplete()
-                    .map { $0.map { FollowerItemViewModel(with: $0) } }
-                    .map { [weak self] items in
-                        guard self != nil else {
-                            return []
-                        }
-                        var mutableList: [FollowerItemViewModel] = []
-                        mutableList.append(contentsOf: self!.allFollowers)
-                        mutableList.append(contentsOf: items)
-                        self?.allFollowers = mutableList
-                        return mutableList
+            
+            return self.useCase.followers(slug)
+                .observeOn(MainScheduler.asyncInstance)
+                .trackActivity(activityIndicator)
+                .asDriverOnErrorJustComplete()
+                .map { $0.map { FollowerItemViewModel(with: $0) } }
+                .map { [weak self] items in
+                    guard self != nil else {
+                        return []
                     }
+                    var mutableList: [FollowerItemViewModel] = []
+                    mutableList.append(contentsOf: self!.allFollowers)
+                    mutableList.append(contentsOf: items)
+                    self?.allFollowers = mutableList
+                    
+                    print("CONA: \(self!.allFollowers.count)")
+                    return mutableList
+            }
         }
         
+//        let followers = input.isNearBottom
+//            .flatMap { _ -> Driver<[FollowerItemViewModel]> in
+//
+//                let slug = self.allFollowers.last?.user.slug ?? ""
+//
+//                return self.useCase.followers(slug)
+//                    .observeOn(MainScheduler.asyncInstance)
+//                    .trackActivity(activityIndicator)
+//                    .asDriverOnErrorJustComplete()
+//                    .map { $0.map { FollowerItemViewModel(with: $0) } }
+//                    .map { [weak self] items in
+//                        guard self != nil else {
+//                            return []
+//                        }
+//                        var mutableList: [FollowerItemViewModel] = []
+//                        mutableList.append(contentsOf: self!.allFollowers)
+//                        mutableList.append(contentsOf: items)
+//                        self?.allFollowers = mutableList
+//
+//                        print("CONA: \(self!.allFollowers.count)")
+//                        return mutableList
+//                }
+//        }
+        
+//        let slugFollowers = Driver
+//            .combineLatest(input.trigger, input.isNearBottom)
+//            .flatMap { (_, _) -> Driver<[FollowerItemViewModel]> in
+//
+//            let slug = self.allFollowers.last?.user.slug ?? ""
+//
+//                return self.useCase.followers(slug)
+//                    .observeOn(MainScheduler.asyncInstance)
+//                    .trackActivity(activityIndicator)
+//                    .asDriverOnErrorJustComplete()
+//                    .map { $0.map { FollowerItemViewModel(with: $0) } }
+//                    .map { [weak self] items in
+//                        guard self != nil else {
+//                            return []
+//                        }
+//                        var mutableList: [FollowerItemViewModel] = []
+//                        mutableList.append(contentsOf: self!.allFollowers)
+//                        mutableList.append(contentsOf: items)
+//                        self?.allFollowers = mutableList
+//                        return mutableList
+//                    }
+//        }
+        
         let selectedFollower = input.selection
-            .withLatestFrom(followers) { (indexPath, followers) -> User in
-                return followers[indexPath.row].user
-            }
+            .map { self.allFollowers[$0.item].user }
             .do(onNext: navigator.toDetail)
+        
+//        let selectedFollower = input.selection
+//            .withLatestFrom(followers) { (indexPath, followers) -> User in
+//                return followers[indexPath.row].user
+//            }
+//            .do(onNext: navigator.toDetail)
         
         return Output(fetching: fetching,
                       followers: followers,
